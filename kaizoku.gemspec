@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.email         = ["ed.a.ezekiel@gmail.com"]
 
   spec.summary       = %q{"Easily find the best gem for the task at hand."}
-  spec.files         = ["lib/kaizoku.rb"]
   spec.homepage      = "https://github.com/edezekiel/kaizoku"
   spec.license       = "MIT"
 
