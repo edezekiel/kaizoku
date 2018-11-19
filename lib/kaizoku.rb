@@ -72,16 +72,17 @@ module Kaizoku
     def get_subcategory(input)
       separator
       doc = Nokogiri::HTML(open("https://www.ruby-toolbox.com"))
+      @subcategories = []
       doc.css(".category-group").each do |category|
-        category.css(".column.is-half-desktop").each do |subcategory|
-          if category.css("h3").text == input
-            @category = category
-            @subcategory = subcategory
-            puts "Here are the #{pastel.bright_yellow('subcategories')}, if any:"
-            puts "  "
+        if category.css("h3").text == input
+          @category = category
+          puts "Here are the #{pastel.bright_yellow('subcategories')}, if any:"
+          puts "  "
+          category.css(".column.is-half-desktop").each do |subcategory|
+            @subcategories << subcategory
             puts subcategory.css("a span").text
-            get_gem_screen
           end
+          get_gem_screen
         end
       end
     end
@@ -100,14 +101,22 @@ module Kaizoku
       elsif input == "back"
         greeting_screen
       else
-        doc = gem_description(input)
+        match_input_with_subcategory(input)
+        subcategory = match_input_with_subcategory(input)
+        doc = gem_description(subcategory)
         gem_description_output(doc)
       end
 
     end
 
-    def gem_description(input)
-      url = "https://www.ruby-toolbox.com" + @subcategory.css("a").attribute("href").value
+    def match_input_with_subcategory(input)
+      @subcategories.select do |subcategory|
+        input == subcategory.css("a span").text
+      end
+    end
+
+    def gem_description(subcategory)
+      url = "https://www.ruby-toolbox.com" + subcategory[0].css("a").attribute("href").value
       doc = Nokogiri::HTML(open(url))
       doc
     end
