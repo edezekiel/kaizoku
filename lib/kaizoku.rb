@@ -132,7 +132,7 @@ module Kaizoku
     def separator
       pastel
       puts "                                                      "
-      puts pastel.bright_yellow("======================================================")
+      puts pastel.bright_magenta("======================================================")
       puts "                                                      "
     end
 
