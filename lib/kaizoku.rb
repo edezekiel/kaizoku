@@ -126,9 +126,9 @@ module Kaizoku
       puts "  "
       puts "#{pastel.bright_yellow(doc.css(".is-size-4").first.children.text)}"
       puts "  "
-      puts "#{pastel.bright_yellow('score: ')} " + doc.css(".score").first.css("span").text
-      puts "#{pastel.bright_yellow('description: ')} " + doc.css(".description.column").first.text
-      puts "#{pastel.bright_yellow('github: ')}: " + doc.css(".links.column").first.css(".button.is-white")[1].attributes["href"].text
+      puts "#{pastel.bright_yellow('score: ')}" + doc.css(".score").first.css("span").text
+      puts "#{pastel.bright_yellow('description: ')}" + doc.css(".description.column").first.text
+      puts "#{pastel.bright_yellow('github: ')}" + doc.css(".links.column").first.css(".button.is-white")[1].attributes["href"].text
       separator
       exit_screen
     end
