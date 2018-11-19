@@ -18,10 +18,10 @@ module Kaizoku
 
     def greeting_screen
       separator
-      puts "Welcome to #{pastel.bright_cyan('Kaizoku')}!"
+      puts "Welcome to #{pastel.bright_yellow('Kaizoku')}!"
       puts "                                                      "
       puts "Easily find the best gem for the task at hand."
-      puts "Type #{pastel.bright_cyan('list')} to see a list of gem categories."
+      puts "Type #{pastel.bright_yellow('list')} to see a list of gem categories."
       separator
       get_category_screen
     end
@@ -55,9 +55,9 @@ module Kaizoku
       separator
       puts "Please make a selection:"
       puts "  "
-      puts "#{pastel.bright_cyan('[category]')} - enter one of the categories see gem subcategories."
-      puts "#{pastel.bright_cyan('back')} - go back to the main screen."
-      puts "#{pastel.bright_cyan('exit')} - go quit the app."
+      puts "#{pastel.bright_yellow('[category]')} - enter one of the categories see gem subcategories."
+      puts "#{pastel.bright_yellow('back')} - go back to the main screen."
+      puts "#{pastel.bright_yellow('exit')} - go quit the app."
       separator
       input = gets.chomp
       if input == "exit"
@@ -77,7 +77,7 @@ module Kaizoku
           if category.css("h3").text == input
             @category = category
             @subcategory = subcategory
-            puts "Here are the #{pastel.bright_cyan('subcategories')}, if any:"
+            puts "Here are the #{pastel.bright_yellow('subcategories')}, if any:"
             puts "  "
             puts subcategory.css("a span").text
             get_gem_screen
@@ -90,8 +90,8 @@ module Kaizoku
     def get_gem_screen
       separator
       puts "Type the subcategory to see the best gem for that category."
-      puts "#{pastel.bright_cyan('back')} - go back to the main screen."
-      puts "#{pastel.bright_cyan('exit')} - go quit the app."
+      puts "#{pastel.bright_yellow('back')} - go back to the main screen."
+      puts "#{pastel.bright_yellow('exit')} - go quit the app."
       separator
       input = gets.chomp
       separator
@@ -115,11 +115,11 @@ module Kaizoku
     def gem_description_output(doc)
       puts "Here's the gem for the job!"
       puts "  "
-      puts "#{pastel.bright_cyan(doc.css(".is-size-4").first.children.text)}"
+      puts "#{pastel.bright_yellow(doc.css(".is-size-4").first.children.text)}"
       puts "  "
-      puts "#{pastel.bright_cyan('score: ')} " + doc.css(".score").first.css("span").text
-      puts "#{pastel.bright_cyan('description: ')} " + doc.css(".description.column").first.text
-      puts "#{pastel.bright_cyan('github: ')}: " + doc.css(".links.column").first.css(".button.is-white")[1].attributes["href"].text
+      puts "#{pastel.bright_yellow('score: ')} " + doc.css(".score").first.css("span").text
+      puts "#{pastel.bright_yellow('description: ')} " + doc.css(".description.column").first.text
+      puts "#{pastel.bright_yellow('github: ')}: " + doc.css(".links.column").first.css(".button.is-white")[1].attributes["href"].text
       separator
       exit_screen
     end
@@ -132,7 +132,7 @@ module Kaizoku
     def separator
       pastel
       puts "                                                      "
-      puts pastel.bright_magenta("======================================================")
+      puts pastel.bright_yellow("======================================================")
       puts "                                                      "
     end
 
